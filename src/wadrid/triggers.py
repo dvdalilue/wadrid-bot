@@ -1,7 +1,4 @@
 # coding: utf-8
-from bernard import (
-    layers as lyr,
-)
 from bernard.engine.triggers import (
     BaseTrigger,
     Text,

@@ -4,9 +4,6 @@ from bernard.engine import (
     Tr,
     triggers as trg,
 )
-from bernard.platforms.telegram import (
-    platform as tgr,
-)
 from bernard.i18n import (
     intents as its,
 )
