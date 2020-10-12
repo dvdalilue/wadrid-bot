@@ -68,12 +68,12 @@ class WadridState(BaseState):
             keyboard=[
                 [
                     tgr.KeyboardButton(
-                        text='No',
+                        text=t.NO,
                         choice='no',
                         intent=its.NO,
                     ),
                     tgr.KeyboardButton(
-                        text='Yes',
+                        text=t.YES,
                         choice='yes',
                         intent=its.YES,
                     )
