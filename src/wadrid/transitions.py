@@ -22,7 +22,7 @@ transitions = [
     Tr(
         origin=S000xInitial,
         dest=S000xInitial,
-        factory=InitialLoop.builder(when='no'),
+        factory=Loop.builder(when='no'),
     ),
     Tr(
         origin=S000xInitial,

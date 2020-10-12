@@ -13,7 +13,7 @@ from .store import (
     FrameContext,
 )
 
-class InitialLoop(Choice):
+class Loop(Choice):
     """
 
     """
