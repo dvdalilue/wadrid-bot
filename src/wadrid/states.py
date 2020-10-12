@@ -28,9 +28,11 @@ class WadridState(BaseState):
     """
     Root class for Wadrid.
 
-    Here you must implement "error" and "confused" to suit your needs. They
-    are the default functions called when something goes wrong. The ERROR and
-    CONFUSED texts are defined in `i18n/en/responses.csv`.
+    Implementation of "error" and "confused" states. The second one shows some
+    useful commands that might help the user to get back into a known state.
+
+    Also, this class defines a common reply keyboard 'ready for use' throughout
+    the user experience.
     """
 
     @page_view('/bot/error')
@@ -83,6 +85,11 @@ class WadridState(BaseState):
 
 class S000xInitial(WadridState):
     """
+    Initial (start) state.
+
+    This state shows a welcome message to the user and initializes the context
+    with frames information. Additionally, check if this state has repeated
+    itself more than one time to inform the user.
     """
 
     @page_view('/bot/initial')
@@ -107,6 +114,11 @@ class S000xInitial(WadridState):
 
 class S001xPrelude(WadridState):
     """
+    Prelude (introduction) state.
+
+    This state presents the task to the user and manages the current search
+    parameters, or configures one if they don't exist, allowing the user to
+    start or continue a search.
     """
 
     @page_view('/bot/begin')
@@ -123,6 +135,11 @@ class S001xPrelude(WadridState):
 
 class S002xFrame(WadridState):
     """
+    Frame (search) state.
+
+    This state sends one image frame to be analysed by the user, asking if the
+    image frame shows a rocket before or after it launches. Also, giving the
+    option to stop (pause) the search.
     """
 
     @page_view('/bot/search')
@@ -142,19 +159,24 @@ class S002xFrame(WadridState):
 
 class S003xFrameInternal(WadridState):
     """
+    Frame internal (bisect) state.
+
+    An auxiliary state, reachable only from 'S002xFrame' after the user answers
+    back, updating the frame context information using the bisect method.
     """
 
-    @page_view('/bot/search/aux')
     @cs.inject()
     async def handle(self, context):
         FrameContext(context).bisect(self.trigger.rocket_launched)
 
-
 class S004xFinal(WadridState):
     """
+    Final (found) state
+
+    Sends an ending message and restarts the frames information.
     """
 
-    @page_view('/bot/final')
+    @page_view('/bot/found')
     @cs.inject()
     async def handle(self, context):
         frame_ctx = FrameContext(context)
@@ -163,6 +185,6 @@ class S004xFinal(WadridState):
         frame_ctx.configure_context()
 
         self.send(
-            lyr.Text(t('FINAL', frame=current_frame)),
+            lyr.Text(t('FOUND', frame=current_frame)),
             WadridState.reply_keyboard()
         )

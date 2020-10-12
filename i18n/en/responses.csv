@@ -9,4 +9,4 @@ BEGIN, I need your visual experience to understand some images and solve an ambi
 CONTINUE, It seems you have done some investigation already. Want to continue?
 IMAGE, What do you see on the image?
 FRAME, did the rocket launch yet? (Yes/No)
-FINAL, You've found it. The rocket take-off at {frame}!. You can /start all over again or do you want me to take you directly to another /search?
+FOUND, You've found it. The rocket take-off at {frame}!. You can /start all over again or do you want me to take you directly to another /search?
