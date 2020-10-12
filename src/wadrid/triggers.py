@@ -39,20 +39,17 @@ class Bisector(Choice):
     def __init__(self, request, upper_bound_choice):
         super(Bisector, self).__init__(request, upper_bound_choice)
         self.choice = upper_bound_choice
-        self.launched = None
+        self.rocket_launched = None
 
     @cs.inject()
     async def rank(self, context) -> float:
         best = await super(Bisector, self).rank()
         frame_ctx = FrameContext(context)
 
-        if not self.slug and not best:
+        if not self.slug and not best or frame_ctx.has_found():
             return .0
 
-        if frame_ctx.has_found():
-            return .0
-
-        self.launched = self.slug == self.choice
+        self.rocket_launched = self.slug == self.choice
 
         return 1.
 
