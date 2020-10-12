@@ -20,6 +20,9 @@ midpoint = lambda x, y: int((x + y) / 2)
 
 class LoopContext():
     """
+    Loop context manager
+
+    Context abstraction to control and check a loop indicator.
     """
 
     def __init__(self, context):
@@ -36,6 +39,11 @@ class LoopContext():
 
 class FrameContext():
     """
+    Frame context manager
+
+    Context abstraction to handle frames related information and parameters.
+    Defines initialization and configuration processes, properties accessors
+    and implements a bisection algorithm.
     """
 
     def __init__(self, context):
