@@ -116,6 +116,8 @@ BERNARD_BASE_URL = getenv('BERNARD_BASE_URL')
 WEBVIEW_SECRET_KEY = getenv('WEBVIEW_SECRET_KEY')
 
 
+FRAMEX_API_URL = getenv('FRAMEX_API_URL')
+
 # --- Network configuration ---
 
 socket_path = getenv('SOCKET_PATH')
