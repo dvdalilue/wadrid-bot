@@ -115,8 +115,13 @@ BERNARD_BASE_URL = getenv('BERNARD_BASE_URL')
 # goes outside and back again).
 WEBVIEW_SECRET_KEY = getenv('WEBVIEW_SECRET_KEY')
 
+# --- Frame behaviour configuration ---
 
 FRAMEX_API_URL = getenv('FRAMEX_API_URL')
+
+FRAMEX_VIDEO_NAME = getenv('FRAMEX_VIDEO_NAME')
+
+FRAME_INITIAL_DEVIATION = getenv('FRAME_INITIAL_DEVIATION', 0.1)
 
 # --- Network configuration ---
 
