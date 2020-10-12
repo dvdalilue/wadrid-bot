@@ -117,7 +117,7 @@ WEBVIEW_SECRET_KEY = getenv('WEBVIEW_SECRET_KEY')
 
 # --- Frame behaviour configuration ---
 
-FRAMEX_API_URL = getenv('FRAMEX_API_URL')
+FRAMEX_API_URL = getenv('FRAMEX_API_URL', 'https://framex-dev.wadrid.net/api/')
 
 FRAMEX_VIDEO_NAME = getenv('FRAMEX_VIDEO_NAME')
 
