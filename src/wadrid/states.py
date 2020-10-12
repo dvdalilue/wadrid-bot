@@ -20,7 +20,6 @@ from bernard.i18n import (
 
 from .store import (
     cs,
-    LoopContext,
     FrameContext,
 )
 
@@ -97,14 +96,12 @@ class S000xInitial(WadridState):
     async def handle(self, context):
         name = await self.request.user.get_friendly_name()
         text = lyr.Text(t('WELCOME', name=name))
-        loop_context = LoopContext(context)
 
-        if loop_context.in_loop():
+        if self.trigger.get('loop'):
             text = lyr.Text(t.LOOP)
         else:
             await FrameContext(context).init_context()
 
-        loop_context.exit_loop()
         context['started'] = False
 
         self.send(
@@ -139,13 +136,19 @@ class S002xFrame(WadridState):
 
     This state sends one image frame to be analysed by the user, asking if the
     image frame shows a rocket before or after it launches. Also, giving the
-    option to stop (pause) the search.
+    option to stop (pause) the search. The bisection depends on the trigger's
+    context.
     """
 
     @page_view('/bot/search')
     @cs.inject()
     async def handle(self, context):
-        url = FrameContext(context).get_image_url()
+        frame_ctx = FrameContext(context)
+
+        if self.trigger.get('bisect'):
+            frame_ctx.bisect(self.trigger.rocket_launched)
+
+        url = frame_ctx.get_image_url()
 
         cancel_kb = tgr.InlineKeyboard([
             [tgr.InlineKeyboardCallbackButton(
@@ -157,19 +160,7 @@ class S002xFrame(WadridState):
         self.send(lyr.Text(url), WadridState.reply_keyboard())
         self.send(lyr.Text(t.FRAME), cancel_kb)
 
-class S003xFrameInternal(WadridState):
-    """
-    Frame internal (bisect) state.
-
-    An auxiliary state, reachable only from 'S002xFrame' after the user answers
-    back, updating the frame context information using the bisect method.
-    """
-
-    @cs.inject()
-    async def handle(self, context):
-        FrameContext(context).bisect(self.trigger.rocket_launched)
-
-class S004xFinal(WadridState):
+class S003xFinal(WadridState):
     """
     Final (found) state
 

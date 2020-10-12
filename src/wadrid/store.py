@@ -18,25 +18,6 @@ cs = create_context_store(ttl=0)
 
 midpoint = lambda x, y: int((x + y) / 2)
 
-class LoopContext():
-    """
-    Loop context manager
-
-    Context abstraction to control and check a loop indicator.
-    """
-
-    def __init__(self, context):
-        self.ctx = context
-
-    def enter_loop(self):
-        self.ctx['loop'] = True
-
-    def exit_loop(self):
-        self.ctx['loop'] = False
-
-    def in_loop(self):
-        return self.ctx.get('loop', False)
-
 class FrameContext():
     """
     Frame context manager

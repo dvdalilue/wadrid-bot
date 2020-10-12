@@ -17,7 +17,7 @@ from .triggers import *
 transitions = [
     Tr(
         dest=S000xInitial,
-        factory=trg.Text.builder(its.WELCOME),
+        factory=CustomText.builder(its.WELCOME),
     ),
     Tr(
         origin=S000xInitial,
@@ -27,47 +27,41 @@ transitions = [
     Tr(
         origin=S000xInitial,
         dest=S001xPrelude,
-        factory=trg.Choice.builder('yes'),
+        factory=CustomChoice.builder('yes'),
     ),
     Tr(
         origin=S001xPrelude,
         dest=S000xInitial,
-        factory=trg.Choice.builder('no'),
+        factory=CustomChoice.builder('no'),
     ),
     Tr(
         dest=S002xFrame,
-        factory=trg.Text.builder(its.BEGIN),
+        factory=CustomText.builder(its.BEGIN),
     ),
     Tr(
         origin=S001xPrelude,
         dest=S002xFrame,
-        factory=trg.Choice.builder('yes'),
+        factory=CustomChoice.builder('yes'),
     ),
     Tr(
         origin=S002xFrame,
-        dest=S003xFrameInternal,
+        dest=S002xFrame,
         factory=Bisector.builder(upper_bound_choice='yes'),
     ),
     Tr(
         origin=S002xFrame,
-        dest=S004xFinal,
+        dest=S003xFinal,
         factory=FrameFound.builder(),
     ),
     Tr(
-        origin=S004xFinal,
+        origin=S003xFinal,
         dest=S000xInitial,
-        factory=trg.Choice.builder('no'),
+        factory=CustomChoice.builder('no'),
     ),
     Tr(
-        origin=S004xFinal,
+        origin=S003xFinal,
         dest=S002xFrame,
-        factory=trg.Choice.builder('yes'),
-    ),
-    Tr(
-        origin=S003xFrameInternal,
-        dest=S002xFrame,
-        factory=trg.Anything.builder(),
-        internal=True,
+        factory=CustomChoice.builder('yes'),
     ),
     Tr(
         origin=S002xFrame,
