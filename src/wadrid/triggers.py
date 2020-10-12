@@ -19,11 +19,11 @@ class InitialLoop(Choice):
     """
 
     def __init__(self, request, when):
-        super(InitialLoop, self).__init__(request, when)
+        super().__init__(request, when)
 
     @cs.inject()
     async def rank(self, context) -> float:
-        rank = await super(InitialLoop, self).rank()
+        rank = await super().rank()
         loop_context = LoopContext(context)
 
         if rank and rank > .0:
@@ -37,13 +37,13 @@ class Bisector(Choice):
     """
 
     def __init__(self, request, upper_bound_choice):
-        super(Bisector, self).__init__(request, upper_bound_choice)
+        super().__init__(request, upper_bound_choice)
         self.choice = upper_bound_choice
         self.rocket_launched = None
 
     @cs.inject()
     async def rank(self, context) -> float:
-        best = await super(Bisector, self).rank()
+        best = await super().rank()
         frame_ctx = FrameContext(context)
 
         if not self.slug and not best or frame_ctx.has_found():
