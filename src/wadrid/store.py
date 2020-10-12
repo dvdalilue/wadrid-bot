@@ -35,7 +35,7 @@ class LoopContext():
         self.ctx['loop'] = False
 
     def in_loop(self):
-        return self.ctx['loop']
+        return self.ctx.get('loop', False)
 
 class FrameContext():
     """
