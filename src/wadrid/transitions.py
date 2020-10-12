@@ -4,6 +4,9 @@ from bernard.engine import (
     Tr,
     triggers as trg,
 )
+from bernard.platforms.telegram.layers import (
+    BotCommand,
+)
 from bernard.i18n import (
     intents as its,
 )
@@ -15,6 +18,10 @@ transitions = [
     Tr(
         dest=S000xInitial,
         factory=CustomText.builder(its.WELCOME),
+    ),
+    Tr(
+        dest=S000xInitial,
+        factory=trg.Equal.builder(BotCommand('/start')),
     ),
     Tr(
         origin=S000xInitial,
@@ -34,6 +41,10 @@ transitions = [
     Tr(
         dest=S002xFrame,
         factory=CustomText.builder(its.BEGIN),
+    ),
+    Tr(
+        dest=S002xFrame,
+        factory=trg.Equal.builder(BotCommand('/search')),
     ),
     Tr(
         origin=S001xPrelude,
