@@ -16,7 +16,7 @@ import random
 
 cs = create_context_store(ttl=0)
 
-midpoint = lambda x, y: (x + y) / 2
+midpoint = lambda x, y: int((x + y) / 2)
 
 class LoopContext():
     """
@@ -69,7 +69,7 @@ class FrameContext():
         self.ctx['min_frame'] = 0
 
         deviation = settings.FRAME_INITIAL_DEVIATION
-        mid_frame = int(midpoint(self.ctx['max_frame'], self.ctx['min_frame']))
+        mid_frame = midpoint(self.ctx['max_frame'], self.ctx['min_frame'])
         frame_dev = int((self.ctx['max_frame'] - mid_frame) * deviation)
 
         self.ctx['frame'] = random.randint(
@@ -110,7 +110,7 @@ class FrameContext():
         else:
             self.set_min_frame(self.get_current_frame())
 
-        new_frame = int(midpoint(self.get_max_frame(), self.get_min_frame()))
+        new_frame = midpoint(self.get_max_frame(), self.get_min_frame())
         self.set_current_frame(new_frame)
 
     def has_found(self):
