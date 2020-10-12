@@ -15,7 +15,10 @@ from .store import (
 
 class Loop(Choice):
     """
+    Loop trigger
 
+    Subclass of the 'Choice' trigger which extends the 'rank' method by altering
+    the context to enter in a loop if the user's choice matches
     """
 
     def __init__(self, request, when):
@@ -24,16 +27,20 @@ class Loop(Choice):
     @cs.inject()
     async def rank(self, context) -> float:
         rank = await super().rank()
-        loop_context = LoopContext(context)
+        loop_ctx = LoopContext(context)
 
         if rank and rank > .0:
-            loop_context.enter_loop()
+            loop_ctx.enter_loop()
 
         return rank
 
 class Bisector(Choice):
     """
+    Bisector trigger
 
+    Subclass of the 'Choice' trigger which extends the 'rank' method by checking
+    the user's response, also if frame context has found an unique possible
+    frame.
     """
 
     def __init__(self, request, upper_bound_choice):
@@ -55,7 +62,9 @@ class Bisector(Choice):
 
 class FrameFound(BaseTrigger):
     """
+    Frame found trigger
 
+    Check whenever the frame context has found the final frame or not.
     """
 
     def __init__(self, request):
