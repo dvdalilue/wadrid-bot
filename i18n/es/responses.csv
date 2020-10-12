@@ -1,0 +1,14 @@
+ERROR, Vaya. Algo ha salido mal.
+HELP, No entiendo lo que dices pero conozco estas palabras especiales que pueden ayudarte:
+START_CMD, /start - ir al inicio
+SEARCH_CMD, /search - comenzar o continuar la busqueda
+WELCOME, Hola {name}! Quieres ayudarme con algo?
+WELCOME, {name}! Estoy en una misión y necesito tu ayuda. Te gustaría unirte?
+YES, Si
+NO, No
+LOOP, Voy a repetir este mensaje hasta que digas 'si'. Mi inteligencia tiene problemas procesando la palabra 'no'. Me ayudas o no?
+BEGIN, Necesito tu ayuda para interpretar una imagenes y resolver una tarea ambigoa. Dime si el cohete ha despegado o no en las imagenes de un vídeo. Estás preparado? (usa el enlace si la imagen se ve pequeña)
+CONTINUE, Parece que ya has hecho parte de la busqueda. Quieres continuar?
+IMAGE, Qué ves en la imagen?
+FRAME, el cohete ya ha despegado? (Si/No)
+FOUND, La has encontrado. El cohete despega en la imagen {frame}!. Puedes comenzar todo otra vez con /start or quieres que te lleve directamente a una nueva busqueda (/search)?
