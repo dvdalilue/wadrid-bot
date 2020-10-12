@@ -104,7 +104,12 @@ class FrameContext():
     def set_min_frame(self, min_frame):
         self.ctx['min_frame'] = min_frame
 
-    def bisect(self):
+    def bisect(self, to_upper_bound):
+        if to_upper_bound:
+            self.set_max_frame(self.get_current_frame())
+        else:
+            self.set_min_frame(self.get_current_frame())
+
         new_frame = int(midpoint(self.get_max_frame(), self.get_min_frame()))
         self.set_current_frame(new_frame)
 

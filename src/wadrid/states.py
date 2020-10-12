@@ -147,15 +147,7 @@ class S003xFrameInternal(WadridState):
     @page_view('/bot/search/aux')
     @cs.inject()
     async def handle(self, context):
-        frame_ctx = FrameContext(context)
-        current_frame = frame_ctx.get_current_frame()
-
-        if self.trigger.launched:
-            frame_ctx.set_max_frame(current_frame)
-        else:
-            frame_ctx.set_min_frame(current_frame)
-
-        frame_ctx.bisect()
+        FrameContext(context).bisect(self.trigger.rocket_launched)
 
 
 class S004xFinal(WadridState):
