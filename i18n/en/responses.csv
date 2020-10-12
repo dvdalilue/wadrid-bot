@@ -1,3 +1,12 @@
 ERROR,Woops. Something went wrong.
-CONFUSED,It seems that I can't understand what you're saying. Please try another way to say it.
-HELLO,Hello!
+HELP, I don't understand what you're saying but I know these special words that might help you:
+START_CMD, /reset - start from zero
+SEARCH_CMD, /search - begin or continue the image search
+WELCOME, Hi {name}! Wanna help me with something?
+WELCOME, {name}! I'm on a mission and your assistence is required. Care to join me?
+LOOP, I'll repeat this message until you say 'yes'. My intelligence has problems processing the word 'no'. So will you help me or not?
+BEGIN, I need your visual experience to understand some images and solve an ambiguous task. Tell me if the rocket has either launched or not in the image frames of a video. Are you ready? (use the link if the preview is not big enough)
+CONTINUE, It seems you have done some investigation already. Want to continue?
+IMAGE, What do you see on the image?
+FRAME, did the rocket launch yet? (Yes/No)
+FINAL, You've found it. The rocket take-off at {frame}!. You can /start all over again or do you want me to take you directly to another /search?

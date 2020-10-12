@@ -1,3 +1,20 @@
-HELLO,hello
-HELLO,hi
-HELLO,howdy
+WELCOME,hello
+WELCOME,hi
+WELCOME,start
+WELCOME,reset
+BEGIN, let's begin
+BEGIN, let's do it
+BEGIN, ok
+BEGIN, fine
+BEGIN, sure
+BEGIN, search
+YES, yes
+YES, yeah
+NO, no
+NO, nope
+CANCEL, out
+CANCEL, quit
+CANCEL, exit
+CANCEL, abort
+CANCEL, close
+CANCEL, halt
