@@ -18,6 +18,22 @@ cs = create_context_store(ttl=0)
 
 midpoint = lambda x, y: (x + y) / 2
 
+class LoopContext():
+    """
+    """
+
+    def __init__(self, context):
+        self.ctx = context
+
+    def enter_loop(self):
+        self.ctx['loop'] = True
+
+    def exit_loop(self):
+        self.ctx['loop'] = False
+
+    def in_loop(self):
+        return self.ctx['loop']
+
 class FrameContext():
     """
     """
