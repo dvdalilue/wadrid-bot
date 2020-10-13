@@ -8,7 +8,7 @@ YES, Yes
 NO, No
 LOOP, I'll repeat this message until you say 'yes'. My intelligence has problems processing the word 'no'. So will you help me or not?
 BEGIN, I need your visual experience to understand some images and solve an ambiguous task. Tell me if the rocket has either launched or not in the image frames of a video. Are you ready? (use the link if the preview is not big enough)
-CONTINUE, It seems you have done some investigation already. Want to continue?
+CONTINUE, It seems you have done some progress already. Want to continue?
 IMAGE, What do you see on the image?
 FRAME, did the rocket launch yet? (Yes/No)
 FOUND, You've found it. The rocket take-off at {frame}!. You can /start all over again or do you want me to take you directly to another /search?
